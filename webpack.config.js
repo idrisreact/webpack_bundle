@@ -32,14 +32,9 @@ module.exports = {
         use: ["style-loader", "css-loader", "sass-loader"],
       },
       {
-        test: "/.js$/",
-        exclude: /\node_modules/,
-        use: {
-          loader: "babel-loader",
-          options: {
-            presets: ["@babel-preset-env"],
-          },
-        },
+        test: /\.(js)$/,
+        exclude: /node_modules/,
+        use: ["babel-loader"],
       },
       {
         test: /\.(png|svg|jpg|jpeg|gif)$/i,
@@ -51,8 +46,10 @@ module.exports = {
     new HtmlWebackPlugin({
       title: "Webpack App",
       filename: "index.html",
-      template: "src/template.html",
+      template: "public/index.html",
     }),
-    new BundleAnalyzerPlugin(),
+    new BundleAnalyzerPlugin({
+      analyzerMode: process.env.STATS || "disabled",
+    }),
   ],
 };

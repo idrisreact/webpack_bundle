@@ -1,5 +1,6 @@
-import generateJoke from "./generateJoke";
-import "./styles/main.scss";
-import idris from "./assets/idris.jpeg";
-console.log(generateJoke());
-console.log(1);
+import React from "react";
+import ReactDOM from "react-dom";
+import App from "./App";
+import "./index.scss";
+
+ReactDOM.render(<App />, document.getElementById("root"));
